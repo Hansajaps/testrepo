@@ -1,0 +1,40 @@
+# Spring Boot Configuration Template
+# Copy this file to application.properties and fill in with your actual values
+# NEVER commit application.properties to version control - use environment variables instead
+
+server.port=8085
+
+# MongoDB Configuration
+# Format: mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority
+spring.data.mongodb.uri=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/Xchange?retryWrites=true&w=majority
+
+# JWT Configuration
+# Generate a strong secret key and set via environment variable: JWT_SECRET
+# Minimum 256 bits recommended
+jwt.secret=${JWT_SECRET:your-secret-key-here-min-256-bits}
+jwt.expiration=86400
+
+# ========================================
+# STRIPE PAYMENT INTEGRATION
+# ========================================
+stripe.enabled=true
+
+# Stripe API Keys - USE ENVIRONMENT VARIABLES IN PRODUCTION
+# Set these via environment variables:
+#   export STRIPE_SECRET_KEY=sk_test_xxx
+#   export STRIPE_PUBLISHABLE_KEY=pk_test_xxx
+#
+# Test Keys: https://dashboard.stripe.com/test/apikeys
+stripe.secret.key=${STRIPE_SECRET_KEY:sk_test_your_test_key_here}
+stripe.publishable.key=${STRIPE_PUBLISHABLE_KEY:pk_test_your_test_key_here}
+
+# Frontend URL for redirect after payment
+stripe.frontend.url=http://localhost:5173
+
+# ========================================
+# BANK TRANSFER PAYMENT CONFIGURATION
+# ========================================
+bank.account.holder=Xchange Marketplace Ltd.
+bank.account.number=XXXX XXXX XXXX XXXX
+bank.routing.number=XXXXXX
+bank.name=Your Bank Name
